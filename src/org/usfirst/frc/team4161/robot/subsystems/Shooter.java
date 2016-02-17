@@ -3,7 +3,7 @@ package org.usfirst.frc.team4161.robot.subsystems;
 import org.usfirst.frc.team4161.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
     
-	Victor ballCollector = RobotMap.BallCollector;
+	Talon ballCollector = RobotMap.BallCollector;
 	Solenoid ballTapOut = RobotMap.BallTapOut, ballTapIn = RobotMap.BallTapIn;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

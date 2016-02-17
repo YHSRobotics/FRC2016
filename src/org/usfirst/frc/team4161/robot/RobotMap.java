@@ -1,9 +1,8 @@
 package org.usfirst.frc.team4161.robot;
 
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Solenoid;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Talon;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -24,8 +23,8 @@ public class RobotMap {
 	private final static int LTreadID = 0, RTreadID = 0, ArmArticulateID = 0, BallTapOutID = 0, BallTapInID = 0,
 			BallTapLimitID = 0, BallCollectorID = 0;
 
-	public static Victor LTread = new Victor(LTreadID), RTread = new Victor(RTreadID),
-			ArmArticulate = new Victor(ArmArticulateID), BallCollector = new Victor(BallCollectorID);
+	public static Talon LTread = new Talon(LTreadID), RTread = new Talon(RTreadID),
+			ArmArticulate = new Talon(ArmArticulateID), BallCollector = new Talon(BallCollectorID);
 
 	public static Solenoid BallTapOut = new Solenoid(BallTapOutID), BallTapIn = new Solenoid(BallTapInID);
 	public static DigitalInput BallTapLimit = new DigitalInput(BallTapLimitID);
