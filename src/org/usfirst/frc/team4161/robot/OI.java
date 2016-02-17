@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4161.robot.commands.ActuateBallTapper;
+import org.usfirst.frc.team4161.robot.commands.RotateFallbackWheels;
 import org.usfirst.frc.team4161.robot.commands.SpinUpCollector;
 
 /**
@@ -23,7 +24,8 @@ public class OI {
 	public static Joystick LJoystick = new Joystick(0), RJoystick = new Joystick(0), AimJoystick = new Joystick(0);
 
 	Button fireActuator = new JoystickButton(null, 0), collectorSpinup = new JoystickButton(null, 0),
-			shooterSpinup = new JoystickButton(null, 0);
+			shooterSpinup = new JoystickButton(null, 0), fbDeploy = new JoystickButton(null, 0),
+			fbRetract = new JoystickButton(null, 0);
 
 	public OI() {
 		fireActuator.whenPressed(new ActuateBallTapper());
@@ -35,6 +37,8 @@ public class OI {
 																	// stop
 																	// spinup.
 		shooterSpinup.whenReleased(new SpinUpCollector(0, false));
+		fbDeploy.whileHeld(new RotateFallbackWheels(1));
+		fbRetract.whileHeld(new RotateFallbackWheels(-1));
 	}
 
 	// There are a few additional built in buttons you can use. Additionally,
