@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4161.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4161.robot.subsystems.FallbackWheels;
 import org.usfirst.frc.team4161.robot.subsystems.Shooter;
 import org.usfirst.frc.team4161.robot.subsystems.ShooterArm;
 
@@ -27,6 +28,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final ShooterArm shooterArm = new ShooterArm();
 	public static final Shooter shooter = new Shooter();
+	public static final FallbackWheels fallbackWheels = new FallbackWheels();
 	public static OI oi;
 
     Command autonomousCommand;
