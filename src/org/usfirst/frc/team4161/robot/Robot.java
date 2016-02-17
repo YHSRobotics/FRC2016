@@ -5,9 +5,13 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
+import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4161.robot.commands.RotateShooterArmWithJoystick;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team4161.robot.subsystems.FallbackWheels;
 import org.usfirst.frc.team4161.robot.subsystems.Shooter;
 import org.usfirst.frc.team4161.robot.subsystems.ShooterArm;
 
@@ -27,10 +31,11 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final ShooterArm shooterArm = new ShooterArm();
 	public static final Shooter shooter = new Shooter();
+	public static final FallbackWheels fallbackWheels = new FallbackWheels();
 	public static OI oi;
 
     Command autonomousCommand;
-    Command driveWithJoystick;
+    Command driveWithJoystick, aimWithJoystick;
     SendableChooser chooser;
 
     /**
@@ -52,6 +57,10 @@ public class Robot extends IterativeRobot {
      */
     public void disabledInit(){
 
+
+        if (driveWithJoystick != null) driveWithJoystick.cancel();//disable joystick following.
+        if (aimWithJoystick != null) aimWithJoystick.cancel();
+    	
     }
 	
 	public void disabledPeriodic() {
@@ -98,6 +107,13 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
+        //start the autonomous commands.
+        driveWithJoystick = new DriveWithJoystick(OI.LJoystick, OI.RJoystick);
+        driveWithJoystick.start();//start it!
+        aimWithJoystick = new RotateShooterArmWithJoystick(OI.AimJoystick);
+        aimWithJoystick.start();//start it!
+        
     }
 
     /**

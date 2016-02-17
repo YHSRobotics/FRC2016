@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4161.robot.commands;
 
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4161.robot.OI;
@@ -10,10 +11,18 @@ import org.usfirst.frc.team4161.robot.Robot;
  *
  */
 public class DriveWithJoystick extends Command {
-	
 
-    public DriveWithJoystick() {
+	private Joystick L, R;
+
+	/**
+	 * Start a command to follow the joystick movements and control the robot.
+	 * @param left Left joystick.
+	 * @param right Right Joystick.
+	 */
+    public DriveWithJoystick(Joystick left, Joystick right) {
     	requires(Robot.driveTrain);
+    	L = left;
+    	R = right;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -24,7 +33,7 @@ public class DriveWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.setDrive(OI.LJoystick.getY(), OI.RJoystick.getY());
+    	Robot.driveTrain.setDrive(L.getY(), R.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
