@@ -3,8 +3,8 @@ package org.usfirst.frc.team4161.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team4161.robot.OI;
 import org.usfirst.frc.team4161.robot.Robot;
-import org.usfirst.frc.team4161.robot.RobotMap;
 
 /**
  *
@@ -24,7 +24,7 @@ public class DriveWithJoystick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.setDrive(RobotMap.LJoystick.getY(), RobotMap.RJoystick.getY());
+    	Robot.driveTrain.setDrive(OI.LJoystick.getY(), OI.RJoystick.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
