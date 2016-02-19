@@ -56,7 +56,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+//obligatory comment.
 
         if (driveWithJoystick != null) driveWithJoystick.cancel();//disable joystick following.
         if (aimWithJoystick != null) aimWithJoystick.cancel();
