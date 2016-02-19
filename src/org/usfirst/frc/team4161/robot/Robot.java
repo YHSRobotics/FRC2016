@@ -48,6 +48,7 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", new ExampleCommand());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        RobotMap.gyro.reset();//reset the gyro.
     }
 	
 	/**
@@ -56,7 +57,7 @@ public class Robot extends IterativeRobot {
 	 * the robot is disabled.
      */
     public void disabledInit(){
-
+//obligatory comment.
 
         if (driveWithJoystick != null) driveWithJoystick.cancel();//disable joystick following.
         if (aimWithJoystick != null) aimWithJoystick.cancel();
@@ -120,7 +121,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        Scheduler.getInstance().run();
+        Scheduler.getInstance().run();//this will run all current commands.
     }
     
     /**
