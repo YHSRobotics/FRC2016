@@ -63,6 +63,8 @@ public class AngleTools {
 	 * @return Difference in heading in range (-180, 180]
 	 */
 	public static double getAngleDifference(double heading, double bearing) {
+		heading = getRoundedAngle(heading);//don't deal with angles out of the range [0, 360)
+		bearing = getRoundedAngle(bearing);
 		double ret = bearing - heading;
 		while (ret <= -180)// get it above -180
 			ret += 360;
