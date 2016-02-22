@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4161.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.ExampleCommand;
+import org.usfirst.frc.team4161.robot.commands.LowerShooterArm;
 import org.usfirst.frc.team4161.robot.commands.RotateShooterArmWithJoystick;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.ExampleSubsystem;
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void robotInit() {
 		oi = new OI();
+		
 		startPosChooser = new SendableChooser();
 		startPosChooser.addDefault("1", 1);
 		startPosChooser.addObject("2", 2);
@@ -58,6 +60,10 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Starting Position", startPosChooser);
 		SmartDashboard.putData("Desired Defense", defensePosChooser);
+		SmartDashboard.putData("Fully Lower Arm", new LowerShooterArm());
+		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.LJoystick, OI.RJoystick));
+		SmartDashboard.putData("Aim With Joystick", new RotateShooterArmWithJoystick(OI.AimJoystick));
+		
 
 		RobotMap.gyro.reset();// reset the gyro.
 	}
