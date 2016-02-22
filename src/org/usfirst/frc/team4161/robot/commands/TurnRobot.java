@@ -26,8 +26,10 @@ public class TurnRobot extends Command {
 	public TurnRobot(double degrees) {
 		bearing = AngleTools.getRoundedAngle(degrees);// put the bearing in the [0,360) range.
 		requires(driveTrain);
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+		
+		System.out.println("TurnRobot: Robot turning from " + gyro.getAngle() + " to " + bearing + ". A difference of " +
+				AngleTools.getAngleDifference(gyro.getAngle(), bearing));
+
 	}
 
 	// Called just before this Command runs the first time
@@ -56,6 +58,7 @@ public class TurnRobot extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		driveTrain.setDrive(0, 0);//stop the motors.
+		System.out.println("TurnRobot: Robot finished turning to " + bearing + " degrees.");
 	}
 
 	// Called when another command which requires one or more of the same

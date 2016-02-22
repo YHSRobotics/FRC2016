@@ -25,6 +25,9 @@ public class PointAndShoot extends CommandGroup {
     	
     	distance -= desiredDistance;//don't go all the way to the tower.
     	
+    	System.out.println("PointAndShoot: Must turn " + desiredAngle + " degrees and drive " + distance
+    			+ " feet to get to the tower from defense #" + startDefense + ".");
+    	
     	//rotate the arm to the distance.
     	addParallel(new RotateShooterArm(ConversionFactor.degreeToTick(desiredAngle), true));
     	//drive up to the 

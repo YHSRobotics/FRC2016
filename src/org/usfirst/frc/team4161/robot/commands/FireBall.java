@@ -10,6 +10,7 @@ public class FireBall extends CommandGroup {
     public  FireBall() {
     	addSequential(new SpinUpCollector(1, true));//spin up the motors
     	addSequential(new ActuateBallTapper());//fire the ball.
+    	System.out.println("FireBall: Ball Fired!");
     	addSequential(new SpinUpCollector(0, false));//stop the spinup motors.
         // Add Commands here:
         // e.g. addSequential(new Command1());

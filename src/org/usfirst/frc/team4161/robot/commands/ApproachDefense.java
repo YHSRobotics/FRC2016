@@ -39,7 +39,9 @@ public class ApproachDefense extends CommandGroup {
 		double angle = Math.atan(opposite / distanceToDefenses);
 		// get the distance to drive.
 		double distance = Math.sqrt(Math.pow(opposite, 2) + Math.pow(distanceToDefenses, 2));
-		// TODO:add debug printout of data.
+
+		System.out.println("ApproachDefense: Must turn " + angle + "degrees the go " + distance
+				+ " feet to reach defense " + destinationDefense + " from start pos " + startPosition);
 
 		addSequential(new TurnRobot(angle));// turn
 		addSequential(new DriveStraight(ConversionFactor.feetToTick(distance), 1));// drive

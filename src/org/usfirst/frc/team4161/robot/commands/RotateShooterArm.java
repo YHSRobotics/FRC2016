@@ -60,6 +60,7 @@ public class RotateShooterArm extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		System.out.println("RotateArmShooter: Arm rotation is complete at power " + maxPower);
 	}
 
 	// Called when another command which requires one or more of the same

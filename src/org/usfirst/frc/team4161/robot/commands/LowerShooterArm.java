@@ -45,6 +45,7 @@ public class LowerShooterArm extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		arm.ArmRotate(0);//stop the arm.
+		System.out.println("LowerShooterArm: The shooter arm is fully lowered.");
 	}
 
 	// Called when another command which requires one or more of the same
