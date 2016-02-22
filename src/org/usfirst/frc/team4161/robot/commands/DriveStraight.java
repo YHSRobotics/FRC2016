@@ -24,10 +24,11 @@ public class DriveStraight extends Command {
 	 * 
 	 * @param ticks
 	 *            Number of ticks to drive forward for.
-	 * @param forward If true, drive forward. Else drive backwards.
+	 * @param forward
+	 *            If true, drive forward. Else drive backwards.
 	 */
 	public DriveStraight(int ticks, boolean forward) {
-		this(ticks, forward ? 1 : -1);//call the other constructor.
+		this(ticks, forward ? 1 : -1);// call the other constructor.
 	}
 
 	/**
@@ -36,17 +37,18 @@ public class DriveStraight extends Command {
 	 * 
 	 * @param ticks
 	 *            Ticks to drive for.
-	 * @param maxPower Maximum power to use. Must be in range [0, 1] (NOTE: 0 will not go anywhere).
+	 * @param maxPower
+	 *            Maximum power to use. Must be in range [0, 1] (NOTE: 0 will
+	 *            not go anywhere).
 	 */
 	public DriveStraight(int ticks, double maxPower) {
 		requires(driveTrain);
 		this.ticks = ticks;
-		if(maxPower < 0){
-			maxPower = -1 * maxPower;//make the power positive.
-			backwards = true;//go backwards
-		}
-		else
-			backwards = false;//go forwards.
+		if (maxPower < 0) {
+			maxPower = -1 * maxPower;// make the power positive.
+			backwards = true;// go backwards
+		} else
+			backwards = false;// go forwards.
 
 	}
 
@@ -59,10 +61,15 @@ public class DriveStraight extends Command {
 	protected void execute() {
 		ticks--;
 		double diff = AngleTools.getAngleDifference(gyro.getAngle(), heading);
-		double compPower = 1 - AngleTools.computePower(diff, maxPower),//get the computed power
-				regPower = backwards ? -1*maxPower:maxPower;//get 'regular' power.
-		compPower = backwards ? -1*compPower : compPower;//check for backwards.
-		
+		double compPower = 1 - AngleTools.computePower(diff, maxPower), // get
+																		// the
+																		// computed
+																		// power
+				regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
+																// power.
+		compPower = backwards ? -1 * compPower : compPower;// check for
+															// backwards.
+
 		if (diff < -1)// correct left
 			driveTrain.setDrive(compPower, regPower);
 		else if (diff > 1)// correct right.
