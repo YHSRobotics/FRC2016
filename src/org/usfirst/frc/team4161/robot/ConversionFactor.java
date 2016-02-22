@@ -13,7 +13,7 @@ public class ConversionFactor {
 	 * @return The number of (estimated) ticks to turn arm for.
 	 */
 	public static int degreeToTick(double degrees) {
-		return (int) Math.round(Math.abs(degrees) * ticksToDegree);
+		return (int) Math.abs(Math.round(Math.abs(degrees) * ticksToDegree));
 	}
 
 	/**
@@ -25,7 +25,7 @@ public class ConversionFactor {
 	 * @return The number of (estimated) ticks to drive for.
 	 */
 	public static int feetToTick(double feet) {
-		return (int) Math.round(Math.abs(feet) * ticksToFeet);
+		return (int) Math.abs(Math.round(Math.abs(feet) * ticksToFeet));
 	}
 
 }
