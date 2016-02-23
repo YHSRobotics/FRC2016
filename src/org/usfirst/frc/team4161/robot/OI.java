@@ -21,11 +21,10 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 
-	public static Joystick LJoystick = new Joystick(0), RJoystick = new Joystick(0), AimJoystick = new Joystick(0);
+	public static Joystick LJoystick = new Joystick(0), RJoystick = new Joystick(1), AimJoystick = new Joystick(0);
 
-	Button fireActuator = new JoystickButton(null, 0), collectorSpinup = new JoystickButton(null, 0),
-			shooterSpinup = new JoystickButton(null, 0), fbDeploy = new JoystickButton(null, 0),
-			fbRetract = new JoystickButton(null, 0);
+	Button fireActuator = new JoystickButton(AimJoystick, 1), collectorSpinup = new JoystickButton(AimJoystick, 5),
+			shooterSpinup = new JoystickButton(AimJoystick, 6);
 
 	public OI() {
 		fireActuator.whenPressed(new ActuateBallTapper());
@@ -37,8 +36,6 @@ public class OI {
 																	// stop
 																	// spinup.
 		shooterSpinup.whenReleased(new SpinUpCollector(0, false));
-		fbDeploy.whileHeld(new RotateFallbackWheels(1));
-		fbRetract.whileHeld(new RotateFallbackWheels(-1));
 	}
 
 	// There are a few additional built in buttons you can use. Additionally,
