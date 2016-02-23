@@ -6,18 +6,11 @@ import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-
-import org.usfirst.frc.team4161.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team4161.robot.commands.DriveStraight;
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.ExampleCommand;
-import org.usfirst.frc.team4161.robot.commands.LowerShooterArm;
-import org.usfirst.frc.team4161.robot.commands.RotateShooterArmWithJoystick;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team4161.robot.subsystems.FallbackWheels;
-import org.usfirst.frc.team4161.robot.subsystems.Shooter;
-import org.usfirst.frc.team4161.robot.subsystems.ShooterArm;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -33,9 +26,9 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final ShooterArm shooterArm = new ShooterArm();
-	public static final Shooter shooter = new Shooter();
-	public static final FallbackWheels fallbackWheels = new FallbackWheels();
+	//public static final ShooterArm shooterArm = new ShooterArm();
+	//public static final Shooter shooter = new Shooter();
+	//public static final FallbackWheels fallbackWheels = new FallbackWheels();
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -68,9 +61,9 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Starting Position", startPosChooser);
 		SmartDashboard.putData("Desired Defense", defensePosChooser);
-		SmartDashboard.putData("Fully Lower Arm", new LowerShooterArm());
+	//	SmartDashboard.putData("Fully Lower Arm", new LowerShooterArm());
 		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.LJoystick, OI.RJoystick));
-		SmartDashboard.putData("Aim With Joystick", new RotateShooterArmWithJoystick(OI.AimJoystick));
+	//	SmartDashboard.putData("Aim With Joystick", new RotateShooterArmWithJoystick(OI.AimJoystick));
 		SmartDashboard.putData("Drive for x ticks", new DriveStraight(prefs));
 
 		
@@ -90,7 +83,7 @@ public class Robot extends IterativeRobot {
 		if (aimWithJoystick != null)
 			aimWithJoystick.cancel();
 		driveTrain.setDrive(0, 0);
-		shooterArm.ArmRotate(0);
+		//shooterArm.ArmRotate(0);
 
 	}
 
@@ -111,7 +104,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousInit() {
 		int startPos = (Integer) startPosChooser.getSelected(), defensePos = (Integer) defensePosChooser.getSelected();
-		autonomousCommand = new AutonomousCommand(startPos, defensePos);
+		//autonomousCommand = new AutonomousCommand(startPos, defensePos);
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -121,8 +114,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		//if (autonomousCommand != null)
+		//	autonomousCommand.start();
 	}
 
 	/**
@@ -144,8 +137,8 @@ public class Robot extends IterativeRobot {
 		// start the autonomous commands.
 		driveWithJoystick = new DriveWithJoystick(OI.LJoystick, OI.RJoystick);
 		driveWithJoystick.start();// start it!
-		aimWithJoystick = new RotateShooterArmWithJoystick(OI.AimJoystick);
-		aimWithJoystick.start();// start it!
+//		aimWithJoystick = new RotateShooterArmWithJoystick(OI.AimJoystick);
+//		aimWithJoystick.start();// start it!
 
 	}
 
@@ -162,6 +155,9 @@ public class Robot extends IterativeRobot {
 	 */
 	public void testPeriodic() {
 		LiveWindow.run();
-		driveTrain.setDrive(OI.LJoystick.getY(), OI.RJoystick.getY());
+
+		//SmartDashboard.putString("JOYSTICKS: ", "L: " + OI.LJoystick.getY() + " R: " + OI.RJoystick.getY());
+		driveTrain.setDrive(-OI.LJoystick.getY(), OI.RJoystick.getY());
+		//RobotMap.RTread.set(.5);
 	}
 }

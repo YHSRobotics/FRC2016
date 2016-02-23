@@ -4,9 +4,6 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team4161.robot.commands.ActuateBallTapper;
-import org.usfirst.frc.team4161.robot.commands.RotateFallbackWheels;
-import org.usfirst.frc.team4161.robot.commands.SpinUpCollector;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -27,15 +24,15 @@ public class OI {
 			shooterSpinup = new JoystickButton(AimJoystick, 6);
 
 	public OI() {
-		fireActuator.whenPressed(new ActuateBallTapper());
-		collectorSpinup.whenPressed(new SpinUpCollector(-1, false));
-		shooterSpinup.whenPressed(new SpinUpCollector(1, false));
-		collectorSpinup.whenReleased(new SpinUpCollector(0, false));// if
-																	// release
-																	// buttons.
-																	// stop
-																	// spinup.
-		shooterSpinup.whenReleased(new SpinUpCollector(0, false));
+//		fireActuator.whenPressed(new ActuateBallTapper());
+//		collectorSpinup.whenPressed(new SpinUpCollector(-1, false));
+//		shooterSpinup.whenPressed(new SpinUpCollector(1, false));
+//		collectorSpinup.whenReleased(new SpinUpCollector(0, false));// if
+//																	// release
+//																	// buttons.
+//																	// stop
+//																	// spinup.
+//		shooterSpinup.whenReleased(new SpinUpCollector(0, false));
 	}
 
 	// There are a few additional built in buttons you can use. Additionally,

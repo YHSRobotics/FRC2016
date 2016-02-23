@@ -24,12 +24,12 @@ public class RobotMap {
 	private final static int LTreadID = 0, RTreadID = 1, ArmArticulateID = 0, BallTapOutID = 0, BallTapInID = 0,
 			BallTapLimitID = 0, BallCollectorID = 0, LFallbackID = 0, RFallbackID = 0;
 
-	public static Talon LTread = new Talon(LTreadID), RTread = new Talon(RTreadID),
+	public static Talon LTread = new Talon(LTreadID), RTread = new Talon(1);/*
 			ArmArticulate = new Talon(ArmArticulateID), BallCollector = new Talon(BallCollectorID),
-			LFallback = new Talon(LFallbackID), RFallback = new Talon(RFallbackID);
+			LFallback = new Talon(LFallbackID), RFallback = new Talon(RFallbackID);*/
 
-	public static Solenoid BallTapOut = new Solenoid(BallTapOutID), BallTapIn = new Solenoid(BallTapInID);
-	public static DigitalInput BallTapLimit = new DigitalInput(BallTapLimitID);
+	/*public static Solenoid BallTapOut = new Solenoid(BallTapOutID), BallTapIn = new Solenoid(BallTapInID);
+	public static DigitalInput BallTapLimit = new DigitalInput(BallTapLimitID);*/
 	public static AnalogGyro gyro = new AnalogGyro(0);
 
 }
