@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class ApproachDefense extends CommandGroup {
 
-	private static double startOffsets[] = { 1, 2, 3 }, defenseOffsets[] = { 1, 2, 3, 4 }, distanceToDefenses = 5;
+	private static double startOffsets[] = { -20, 0, 20 }, defenseOffsets[] = { -1.1, -6.66, -2.22, 2.22, 6.66 }, distanceToDefenses = 7;
 
 	/**
 	 * Approach and line up with the defense.
