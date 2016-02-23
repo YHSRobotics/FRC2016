@@ -128,6 +128,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putString("Heading ", ""+RobotMap.gyro.getAngle());
 	}
 
 	public void teleopInit() {
@@ -151,6 +152,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();// this will run all current commands.
+		SmartDashboard.putString("Heading ", ""+RobotMap.gyro.getAngle());
 	}
 
 	/**
