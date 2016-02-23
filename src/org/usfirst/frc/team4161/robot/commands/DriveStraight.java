@@ -5,6 +5,7 @@ import org.usfirst.frc.team4161.robot.RobotMap;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.AnalogGyro;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -18,6 +19,7 @@ public class DriveStraight extends Command {
 	private int ticks;
 	private boolean backwards;
 	private double heading, maxPower;
+	private Preferences prefs;
 
 	/**
 	 * Drive straight forward for x number of ticks.
@@ -29,6 +31,10 @@ public class DriveStraight extends Command {
 	 */
 	public DriveStraight(int ticks, boolean forward) {
 		this(ticks, forward ? 1 : -1);// call the other constructor.
+	}
+	
+	public DriveStraight(Preferences prefs){
+		this.prefs = prefs;
 	}
 
 	/**
@@ -55,6 +61,10 @@ public class DriveStraight extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		heading = RobotMap.gyro.getAngle();
+		if(prefs != null)
+			ticks = prefs.getInt("DriveTickCount", 10);
+		System.out.println("DriveStraight: Commanded to drive straight at heading " 
+			+ heading + " for " + ticks + " feet.");
 	}
 
 	// Called repeatedly when this Command is scheduled to run

@@ -2,11 +2,13 @@
 package org.usfirst.frc.team4161.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4161.robot.commands.AutonomousCommand;
+import org.usfirst.frc.team4161.robot.commands.DriveStraight;
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4161.robot.commands.LowerShooterArm;
@@ -39,6 +41,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	Command driveWithJoystick, aimWithJoystick;
 	SendableChooser startPosChooser, defensePosChooser;
+	Preferences prefs;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -57,14 +60,20 @@ public class Robot extends IterativeRobot {
 		defensePosChooser.addObject("2", 2);
 		defensePosChooser.addObject("3", 3);
 		defensePosChooser.addObject("4", 4);
+		
+		
+		prefs = Preferences.getInstance();
+		
+		prefs.putInt("DriveTickCount", 100);
 
 		SmartDashboard.putData("Starting Position", startPosChooser);
 		SmartDashboard.putData("Desired Defense", defensePosChooser);
 		SmartDashboard.putData("Fully Lower Arm", new LowerShooterArm());
 		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.LJoystick, OI.RJoystick));
 		SmartDashboard.putData("Aim With Joystick", new RotateShooterArmWithJoystick(OI.AimJoystick));
-		
+		SmartDashboard.putData("Drive for x ticks", new DriveStraight(prefs));
 
+		
 		RobotMap.gyro.reset();// reset the gyro.
 	}
 
