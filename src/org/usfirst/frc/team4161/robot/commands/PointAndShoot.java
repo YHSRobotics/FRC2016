@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class PointAndShoot extends CommandGroup {
 
-	private static double defenseOffset[] = { -1.1, -6.66, -2.22, 2.22, 6.66 }, towerDistance = 191.5, desiredDistance = 5,
+	private static double defenseOffset[] = { -11.1, -6.66, -2.22, 2.22, 6.66 }, towerDistance = 191.5, desiredDistance = 5,
 			desiredAngle = 5;
 
 	/**
