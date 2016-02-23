@@ -89,6 +89,8 @@ public class Robot extends IterativeRobot {
 			driveWithJoystick.cancel();// disable joystick following.
 		if (aimWithJoystick != null)
 			aimWithJoystick.cancel();
+		driveTrain.setDrive(0, 0);
+		shooterArm.ArmRotate(0);
 
 	}
 
@@ -160,5 +162,6 @@ public class Robot extends IterativeRobot {
 	 */
 	public void testPeriodic() {
 		LiveWindow.run();
+		driveTrain.setDrive(OI.LJoystick.getY(), OI.RJoystick.getY());
 	}
 }
