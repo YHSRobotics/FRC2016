@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class TurnRobot extends Command {
 
-	private double bearing, tolerance = 3;
+	private double bearing, tolerance = 3, ticks;
 	private AnalogGyro gyro = RobotMap.gyro;
 	private DriveTrain driveTrain = Robot.driveTrain;
 
@@ -34,6 +34,7 @@ public class TurnRobot extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		ticks = 0;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -41,12 +42,18 @@ public class TurnRobot extends Command {
 		//update motor speeds and decide the direction based on the difference
 		double diff = AngleTools.getAngleDifference(gyro.getAngle(), bearing),//get the difference
 				power = AngleTools.computePower(diff);
+		
+		if (ticks <= 100){//don't accelerate too fast.
+			double reductionFactor = ticks/100;
+			power *= reductionFactor;
+		}
+		
 		if(diff < 0)//turn left
 			driveTrain.setDrive(-1*power, power);
 		else
 			driveTrain.setDrive(power, -1*power);//turn right.
 			
-
+		ticks++;
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

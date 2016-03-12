@@ -71,15 +71,20 @@ public class DriveStraight extends Command {
 	protected void execute() {
 		ticks--;
 		double diff = AngleTools.getAngleDifference(gyro.getAngle(), heading);
-		double compPower = 1 - AngleTools.computePower(diff, maxPower), // get
+		double compPower = 1 - AngleTools.computePower(diff, maxPower); // get
 																		// the
 																		// computed
 																		// power
-				regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
+		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
 																// power.
 		compPower = backwards ? -1 * compPower : compPower;// check for
 															// backwards.
-
+		if (ticks <= 100){//don't accelerate too fast.
+			double reductionFactor = ticks/100;
+			compPower *= reductionFactor;
+			regPower *= reductionFactor;
+		}
+		
 		if (diff < -1)// correct left
 			driveTrain.setDrive(compPower, regPower);
 		else if (diff > 1)// correct right.
