@@ -1,5 +1,8 @@
 *.class
 
+#computer specific configuration
+.classpath
+
 #Binaries
 /bin/
 
