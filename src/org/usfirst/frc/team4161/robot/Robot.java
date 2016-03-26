@@ -73,7 +73,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Aim With Joystick", new RotateShooterArmWithJoystick(OI.AimJoystick));
 		SmartDashboard.putData("Drive for x ticks", new DriveStraight(prefs));
 
-		
+		RobotMap.LTread.setInverted(true);//make the left tread go forward at 1.0
 		RobotMap.gyro.reset();// reset the gyro.
 	}
 
@@ -162,6 +162,5 @@ public class Robot extends IterativeRobot {
 	 */
 	public void testPeriodic() {
 		LiveWindow.run();
-		driveTrain.setDrive(OI.LJoystick.getY(), OI.RJoystick.getY());
 	}
 }
