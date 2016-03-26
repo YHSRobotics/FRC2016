@@ -2,7 +2,7 @@ package org.usfirst.frc.team4161.robot;
 
 public class ConversionFactor {
 
-	public static double ticksToFeet = 1, ticksToDegree = 1;
+	public static double ticksToFeet = 1, ticksToDegree = 10;
 
 	/**
 	 * Given the desired degree, returns the number of (estimated) ticks to turn

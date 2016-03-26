@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4161.robot;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
@@ -30,6 +29,5 @@ public class RobotMap {
 
 	public static Solenoid BallTapOut = new Solenoid(BallTapOutID), BallTapIn = new Solenoid(BallTapInID);
 	public static DigitalInput BallTapLimit = new DigitalInput(BallTapLimitID);
-	public static AnalogGyro gyro = new AnalogGyro(0);
 
 }

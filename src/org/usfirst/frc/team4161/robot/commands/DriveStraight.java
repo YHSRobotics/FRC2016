@@ -14,9 +14,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveStraight extends Command {
 
 	private DriveTrain driveTrain = Robot.driveTrain;
-	private AnalogGyro gyro = RobotMap.gyro;
 
-	private int ticks;
+	private int ticks, startTicks;
 	private boolean backwards;
 	private double heading, maxPower;
 	private Preferences prefs;
@@ -50,6 +49,7 @@ public class DriveStraight extends Command {
 	public DriveStraight(int ticks, double maxPower) {
 		requires(driveTrain);
 		this.ticks = ticks;
+		startTicks = ticks;
 		if (maxPower < 0) {
 			maxPower = -1 * maxPower;// make the power positive.
 			backwards = true;// go backwards
@@ -60,37 +60,27 @@ public class DriveStraight extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		heading = RobotMap.gyro.getAngle();
 		if(prefs != null)
 			ticks = prefs.getInt("DriveTickCount", 10);
-		System.out.println("DriveStraight: Commanded to drive straight at heading " 
-			+ heading + " for " + ticks + " feet.");
+		System.out.println("DriveStraight: Commanded to drive straight for " + ticks + " feet.");
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		ticks--;
-		double diff = AngleTools.getAngleDifference(gyro.getAngle(), heading);
-		double compPower = 1 - AngleTools.computePower(diff, maxPower); // get
-																		// the
-																		// computed
-																		// power
 		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
 																// power.
-		compPower = backwards ? -1 * compPower : compPower;// check for
-															// backwards.
-		if (ticks <= 100){//don't accelerate too fast.
+		if (ticks <= 100){//don't decelerate too fast.
 			double reductionFactor = ticks/100;
-			compPower *= reductionFactor;
 			regPower *= reductionFactor;
 		}
+		else if ( startTicks - ticks <= 100 ){//don't accelerate too fast.
+			double reductionFactor = (startTicks-ticks)/100;
+			regPower *= reductionFactor;
+		}
+
 		
-		if (diff < -1)// correct left
-			driveTrain.setDrive(compPower, regPower);
-		else if (diff > 1)// correct right.
-			driveTrain.setDrive(regPower, compPower);
-		else
-			driveTrain.setDrive(regPower, regPower);// go straight.
+		driveTrain.setDrive(regPower, regPower);// go straight.
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

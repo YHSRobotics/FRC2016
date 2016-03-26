@@ -13,6 +13,7 @@ import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4161.robot.commands.LowerShooterArm;
 import org.usfirst.frc.team4161.robot.commands.RotateShooterArmWithJoystick;
+import org.usfirst.frc.team4161.robot.commands.TurnRobot;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team4161.robot.subsystems.FallbackWheels;
@@ -63,8 +64,9 @@ public class Robot extends IterativeRobot {
 		
 		
 		prefs = Preferences.getInstance();
-		
+
 		prefs.putInt("DriveTickCount", 100);
+		prefs.putInt("TurnTickCount", 100);
 
 		SmartDashboard.putData("Starting Position", startPosChooser);
 		SmartDashboard.putData("Desired Defense", defensePosChooser);
@@ -72,9 +74,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.LJoystick, OI.RJoystick));
 		SmartDashboard.putData("Aim With Joystick", new RotateShooterArmWithJoystick(OI.AimJoystick));
 		SmartDashboard.putData("Drive for x ticks", new DriveStraight(prefs));
+		SmartDashboard.putData("Turn for x ticks", new TurnRobot(prefs));
 
 		RobotMap.LTread.setInverted(true);//make the left tread go forward at 1.0
-		RobotMap.gyro.reset();// reset the gyro.
 	}
 
 	/**
@@ -130,7 +132,6 @@ public class Robot extends IterativeRobot {
 	 */
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
-		SmartDashboard.putString("Heading ", ""+RobotMap.gyro.getAngle());
 	}
 
 	public void teleopInit() {
@@ -154,7 +155,6 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();// this will run all current commands.
-		SmartDashboard.putString("Heading ", ""+RobotMap.gyro.getAngle());
 	}
 
 	/**
