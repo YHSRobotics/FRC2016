@@ -38,4 +38,5 @@ public class PointAndShoot extends CommandGroup {
 		addSequential(new FireBall());// fire the ball!
 
 	}
+
 }

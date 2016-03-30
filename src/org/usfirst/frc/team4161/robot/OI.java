@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4161.robot.commands.ActuateBallTapper;
-import org.usfirst.frc.team4161.robot.commands.RotateFallbackWheels;
 import org.usfirst.frc.team4161.robot.commands.SpinUpCollector;
 
 /**
