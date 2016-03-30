@@ -14,10 +14,10 @@ public class TurnRobot extends Command {
 
 	private int ticks, startTicks;
 	private boolean turnRight;
-	// AccelerationProtection prevents the robot from going from 0 to full
+	// accelerationThreshold prevents the robot from going from 0 to full
 	// acceleration too fast. The higher the value, the longer the robot will
 	// take to speed up.
-	private final double accelerationProtection = 100;
+	private final double accelerationThreshold = 100;
 	private DriveTrain driveTrain = Robot.driveTrain;
 
 	/**
@@ -70,13 +70,13 @@ public class TurnRobot extends Command {
 	protected void execute() {
 		double power = 1;// assume power of 1
 
-		if (ticks <= accelerationProtection) {// don't decelerate too fast.
-			double reductionFactor = ticks / accelerationProtection;
+		if (ticks <= accelerationThreshold) {// don't decelerate too fast.
+			double reductionFactor = ticks / accelerationThreshold;
 			power *= reductionFactor;
-		} else if (startTicks - ticks <= accelerationProtection) {// don't
+		} else if (startTicks - ticks <= accelerationThreshold) {// don't
 																	// accelerate
 																	// too fast.
-			double reductionFactor = (startTicks - ticks) / accelerationProtection;
+			double reductionFactor = (startTicks - ticks) / accelerationThreshold;
 			power *= reductionFactor;
 		}
 

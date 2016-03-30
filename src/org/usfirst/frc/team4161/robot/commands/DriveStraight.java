@@ -15,9 +15,9 @@ public class DriveStraight extends Command {
 
 	private DriveTrain driveTrain = Robot.driveTrain;
 
-	private int ticks, startTicks;
+	private int ticks, startTicks, accelerationThreshold = 100;
 	private boolean backwards;
-	private double heading, maxPower;
+	private double maxPower;
 	private Preferences prefs;
 
 	/**
@@ -70,12 +70,12 @@ public class DriveStraight extends Command {
 		ticks--;
 		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
 																// power.
-		if (ticks <= 100){//don't decelerate too fast.
-			double reductionFactor = ticks/100;
+		if (ticks <= accelerationThreshold){//don't decelerate too fast.
+			double reductionFactor = ticks/accelerationThreshold;
 			regPower *= reductionFactor;
 		}
-		else if ( startTicks - ticks <= 100 ){//don't accelerate too fast.
-			double reductionFactor = (startTicks-ticks)/100;
+		else if ( startTicks - ticks <= accelerationThreshold ){//don't accelerate too fast.
+			double reductionFactor = (startTicks-ticks)/accelerationThreshold;
 			regPower *= reductionFactor;
 		}
 
