@@ -70,12 +70,12 @@ public class TurnRobot extends Command {
 	protected void execute() {
 		double power = 1;// assume power of 1
 
-		if (ticks <= accelerationThreshold) {// don't decelerate too fast.
+		if (ticks <= accelerationThreshold && ticks < (startTicks - ticks)) {
+			// don't decelerate too fast
 			double reductionFactor = ticks / accelerationThreshold;
 			power *= reductionFactor;
-		} else if (startTicks - ticks <= accelerationThreshold) {// don't
-																	// accelerate
-																	// too fast.
+		} else if (startTicks - ticks <= accelerationThreshold) {
+			// don't accelerate too fast.
 			double reductionFactor = (startTicks - ticks) / accelerationThreshold;
 			power *= reductionFactor;
 		}

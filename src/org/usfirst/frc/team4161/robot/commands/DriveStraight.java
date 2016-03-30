@@ -70,7 +70,7 @@ public class DriveStraight extends Command {
 		ticks--;
 		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
 																// power.
-		if (ticks <= accelerationThreshold){//don't decelerate too fast.
+		if (ticks <= accelerationThreshold && ticks < (startTicks - ticks)){//don't decelerate too fast.
 			double reductionFactor = ticks/accelerationThreshold;
 			regPower *= reductionFactor;
 		}
