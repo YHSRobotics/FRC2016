@@ -10,13 +10,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4161.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team4161.robot.commands.DriveStraight;
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
-import org.usfirst.frc.team4161.robot.commands.ExampleCommand;
 import org.usfirst.frc.team4161.robot.commands.LowerShooterArm;
 import org.usfirst.frc.team4161.robot.commands.RotateShooterArmWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.TurnRobot;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4161.robot.subsystems.ExampleSubsystem;
-import org.usfirst.frc.team4161.robot.subsystems.FallbackWheels;
 import org.usfirst.frc.team4161.robot.subsystems.Shooter;
 import org.usfirst.frc.team4161.robot.subsystems.ShooterArm;
 
@@ -32,11 +29,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final ShooterArm shooterArm = new ShooterArm();
 	public static final Shooter shooter = new Shooter();
-	public static final FallbackWheels fallbackWheels = new FallbackWheels();
 	public static OI oi;
 
 	Command autonomousCommand;

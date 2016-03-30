@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4161.robot.commands;
 
 import org.usfirst.frc.team4161.robot.ConversionFactor;
-import org.usfirst.frc.team4161.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -30,6 +29,8 @@ public class PointAndShoot extends CommandGroup {
     	
     	//rotate the arm to the distance.
     	addParallel(new RotateShooterArm(ConversionFactor.degreeToTick(desiredAngle), true));
+    	//turn to the desired angle
+    	addSequential(new TurnRobot(angle));
     	//drive up to the 
     	addSequential(new DriveStraight(ConversionFactor.feetToTick(distance), true));
     	addSequential(new FireBall());//fire the ball!

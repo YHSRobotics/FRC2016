@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4161.robot.commands;
 
-import org.usfirst.frc.team4161.robot.OI;
 import org.usfirst.frc.team4161.robot.Robot;
 import org.usfirst.frc.team4161.robot.subsystems.ShooterArm;
 
