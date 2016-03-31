@@ -21,12 +21,12 @@ public class RobotMap {
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
 	private final static int LTreadID = 0, RTreadID = 1, ArmArticulateID = 0, BallTapOutID = 0, BallTapInID = 0,
-			BallTapLimitID = 0, BallCollectorID = 0;
+			BallTapLimitID = 0, BallCollectorID = 0, ShooterActuatorID = 0;
 
 	public static Talon LTread = new Talon(LTreadID), RTread = new Talon(RTreadID),
-			ArmArticulate = new Talon(ArmArticulateID), BallCollector = new Talon(BallCollectorID);
+			ArmArticulate = new Talon(ArmArticulateID), BallCollector = new Talon(BallCollectorID),
+			ShooterActuator  = new Talon(ShooterActuatorID);
 
-	public static Solenoid BallTapOut = new Solenoid(BallTapOutID), BallTapIn = new Solenoid(BallTapInID);
 	public static DigitalInput BallTapLimit = new DigitalInput(BallTapLimitID);
 
 }

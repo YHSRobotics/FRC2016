@@ -11,8 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
     
-	Talon ballCollector = RobotMap.BallCollector;
-	Solenoid ballTapOut = RobotMap.BallTapOut, ballTapIn = RobotMap.BallTapIn;
+	Talon ballCollector = RobotMap.BallCollector, shooterActuator = RobotMap.ShooterActuator;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 	
@@ -29,8 +28,7 @@ public class Shooter extends Subsystem {
 	}
 	
 	public void releaseBallTapper() {
-		ballTapOut.set(false);
-		ballTapIn.set(false);
+		shooterActuator.set(0.0);
 	}
 
 	/**
@@ -40,8 +38,7 @@ public class Shooter extends Subsystem {
 	 *            True if ball tapper is extended.
 	 */
 	public void setBallTapper(boolean isExtended) {
-		ballTapOut.set(isExtended);
-		ballTapIn.set(!isExtended);
+		shooterActuator.set(isExtended ? 1.0 : 0.0);
 	}
 
     public void initDefaultCommand() {
