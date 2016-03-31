@@ -1,10 +1,7 @@
 package org.usfirst.frc.team4161.robot.commands;
 
 import org.usfirst.frc.team4161.robot.Robot;
-import org.usfirst.frc.team4161.robot.RobotMap;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
-
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 
