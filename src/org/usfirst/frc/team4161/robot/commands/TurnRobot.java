@@ -48,7 +48,7 @@ public class TurnRobot extends Command {
 	 *            degrees to turn.
 	 */
 	public TurnRobot(double degrees) {
-		this(ConversionFactor.degreeToTick(degrees), (degrees > 0) ? true : false);
+		this(ConversionFactor.driveDegreesToTick(degrees), (degrees > 0) ? true : false);
 	}
 
 	/**
