@@ -23,8 +23,8 @@ public class OI {
 
 	public static Joystick LJoystick = new Joystick(0), RJoystick = new Joystick(1), AimJoystick = new Joystick(0);
 
-	Button fireActuator = new JoystickButton(AimJoystick, 1), collectorSpinup = new JoystickButton(AimJoystick, 5),
-			shooterSpinup = new JoystickButton(AimJoystick, 6);
+	Button fireActuator = new JoystickButton(AimJoystick, 1), collectorSpinup = new JoystickButton(AimJoystick, 2),
+			shooterSpinup = new JoystickButton(AimJoystick, 3);
 
 	public OI() {
 		fireActuator.whenPressed(new MoveActuator(true));
