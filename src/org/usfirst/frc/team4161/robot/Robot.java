@@ -49,6 +49,7 @@ public class Robot extends IterativeRobot {
 		startPosChooser.addDefault("1", 1);
 		startPosChooser.addObject("2", 2);
 		startPosChooser.addObject("3", 3);
+		startPosChooser.addObject("Straight Forward", 3);
 
 		defensePosChooser = new SendableChooser();
 		defensePosChooser.addDefault("1", 1);
