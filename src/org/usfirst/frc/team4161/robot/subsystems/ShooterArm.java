@@ -4,6 +4,7 @@ import org.usfirst.frc.team4161.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -13,7 +14,7 @@ public class ShooterArm extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	Talon armArticulate = RobotMap.ArmArticulate;
+	Victor armArticulate = RobotMap.ArmArticulate;
 	DigitalInput ballTapLimit = RobotMap.BallTapLimit;
 
 	public void initDefaultCommand() {
