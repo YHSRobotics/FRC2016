@@ -10,7 +10,8 @@ import org.usfirst.frc.team4161.robot.Robot;
  */
 public class DriveWithJoystick extends Command {
 
-	private Joystick L, R;
+	private Joystick L, R, XBox;
+	private boolean isXbox;
 
 	/**
 	 * Start a command to follow the joystick movements and control the robot.
@@ -21,17 +22,31 @@ public class DriveWithJoystick extends Command {
     	requires(Robot.driveTrain);
     	L = left;
     	R = right;
+    	isXbox = false;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
+    /**
+     * Start a command to follow the xbox joystick movements to control the
+     * robot treads.
+     * @param joystick the joystick to read from.
+     */
+    public DriveWithJoystick(Joystick joystick){
+    	XBox = joystick;
+    	isXbox = true;
+    }
+    
     // Called just before this Command runs the first time
     protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.setDrive(L.getY(), R.getY());
+    	if(isXbox)
+    		Robot.driveTrain.setDrive(XBox.getRawAxis(1), XBox.getRawAxis(5));
+    	else
+    		Robot.driveTrain.setDrive(L.getY(), R.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

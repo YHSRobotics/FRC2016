@@ -64,7 +64,7 @@ public class Robot extends IterativeRobot {
 
 		SmartDashboard.putData("Starting Position", startPosChooser);
 		SmartDashboard.putData("Desired Defense", defensePosChooser);
-		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.LJoystick, OI.RJoystick));
+		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.DriveJoystick));
 		SmartDashboard.putData("Aim With Joystick", new RotateShooterArmWithJoystick(OI.AimJoystick));
 		SmartDashboard.putData("Drive for x ticks", new DriveStraight(prefs));
 		SmartDashboard.putData("Turn for x ticks", new TurnRobot(prefs));
@@ -129,7 +129,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 
 		// start the autonomous commands.
-		driveWithJoystick = new DriveWithJoystick(OI.LJoystick, OI.RJoystick);
+		driveWithJoystick = new DriveWithJoystick(OI.DriveJoystick);
 		driveWithJoystick.start();// start it!
 		aimWithJoystick = new RotateShooterArmWithJoystick(OI.AimJoystick);
 		aimWithJoystick.start();// start it!

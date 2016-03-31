@@ -21,7 +21,7 @@ public class OI {
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
 
-	public static Joystick LJoystick = new Joystick(0), RJoystick = new Joystick(1), AimJoystick = new Joystick(0);
+	public static Joystick DriveJoystick = new Joystick(0), AimJoystick = new Joystick(1);
 
 	Button fireActuator = new JoystickButton(AimJoystick, 1), collectorSpinup = new JoystickButton(AimJoystick, 2),
 			shooterSpinup = new JoystickButton(AimJoystick, 3);
