@@ -21,8 +21,8 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	private final static int LTreadID = 0, RTreadID = 1, ArmArticulateID = 0,
-			BallTapLimitID = 0, BallCollectorID = 0, ShooterActuatorID = 0;
+	private final static int LTreadID = 0, RTreadID = 1, ArmArticulateID = 4,
+			BallTapLimitID = 0, BallCollectorID = 2, ShooterActuatorID = 3;
 
 	public static Talon LTread = new Talon(LTreadID), RTread = new Talon(RTreadID);
 	
