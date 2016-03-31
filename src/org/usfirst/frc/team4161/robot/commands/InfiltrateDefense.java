@@ -1,17 +1,18 @@
 package org.usfirst.frc.team4161.robot.commands;
 
+import org.usfirst.frc.team4161.robot.ConversionFactor;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class FireBall extends CommandGroup {
+public class InfiltrateDefense extends CommandGroup {
     
-    public  FireBall() {
-    	addSequential(new SpinUpCollector(1, true));//spin up the motors
-    	addSequential(new ActuateBallTapper());//fire the ball.
-    	System.out.println("FireBall: Ball Fired!");
-    	addSequential(new SpinUpCollector(0, false));//stop the spinup motors.
+    public  InfiltrateDefense() {
+    	addSequential(new RotateShooterArm(ConversionFactor.armDegreesToTick(25), true));
+    	addSequential(new DriveStraight(100, .5));//drive at partial power
+    	addSequential(new LowerShooterArm());//lower the arm.
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

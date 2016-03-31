@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4161.robot;
 
-import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
@@ -21,8 +20,8 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	private final static int LTreadID = 0, RTreadID = 0, ArmArticulateID = 0, BallTapOutID = 0, BallTapInID = 0,
-			BallTapLimitID = 0, BallCollectorID = 0, LFallbackID = 0, RFallbackID = 0;;
+	private final static int LTreadID = 0, RTreadID = 1, ArmArticulateID = 0, BallTapOutID = 0, BallTapInID = 0,
+			BallTapLimitID = 0, BallCollectorID = 0, LFallbackID = 0, RFallbackID = 0;
 
 	public static Talon LTread = new Talon(LTreadID), RTread = new Talon(RTreadID),
 			ArmArticulate = new Talon(ArmArticulateID), BallCollector = new Talon(BallCollectorID),
@@ -30,6 +29,5 @@ public class RobotMap {
 
 	public static Solenoid BallTapOut = new Solenoid(BallTapOutID), BallTapIn = new Solenoid(BallTapInID);
 	public static DigitalInput BallTapLimit = new DigitalInput(BallTapLimitID);
-	public static AnalogGyro gyro = new AnalogGyro(0);
 
 }
