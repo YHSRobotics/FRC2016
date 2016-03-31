@@ -7,10 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.usfirst.frc.team4161.robot.commands.ActuateBallTapper;
 import org.usfirst.frc.team4161.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team4161.robot.commands.DriveStraight;
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.RotateShooterArmWithJoystick;
+import org.usfirst.frc.team4161.robot.commands.SpinUpCollector;
 import org.usfirst.frc.team4161.robot.commands.TurnRobot;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.Shooter;
@@ -68,6 +70,10 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Aim With Joystick", new RotateShooterArmWithJoystick(OI.AimJoystick));
 		SmartDashboard.putData("Drive for x ticks", new DriveStraight(prefs));
 		SmartDashboard.putData("Turn for x ticks", new TurnRobot(prefs));
+		SmartDashboard.putData("Shooter Test", new SpinUpCollector(1, false));
+		SmartDashboard.putData("Collector Test", new SpinUpCollector(-.5, false));
+		SmartDashboard.putData("Deactivate Shooter/Collector", new SpinUpCollector(0, false));
+		SmartDashboard.putData("Actuate Ball-Tapper", new ActuateBallTapper());
 
 		RobotMap.LTread.setInverted(true);// make the left tread go forward at
 											// 1.0
