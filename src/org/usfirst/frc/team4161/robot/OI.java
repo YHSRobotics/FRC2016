@@ -29,7 +29,7 @@ public class OI {
 	public OI() {
 		fireActuator.whenPressed(new MoveActuator(true));
 		fireActuator.whenReleased(new MoveActuator(false));
-		collectorSpinup.whenPressed(new SpinUpCollector(-1, false));
+		collectorSpinup.whenPressed(new SpinUpCollector(-.5, false));
 		shooterSpinup.whenPressed(new SpinUpCollector(1, false));
 		collectorSpinup.whenReleased(new SpinUpCollector(0, false));// if
 																	// release
