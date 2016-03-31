@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4161.robot.commands.ActuateBallTapper;
+import org.usfirst.frc.team4161.robot.commands.MoveActuator;
 import org.usfirst.frc.team4161.robot.commands.SpinUpCollector;
 
 /**
@@ -26,7 +27,8 @@ public class OI {
 			shooterSpinup = new JoystickButton(AimJoystick, 6);
 
 	public OI() {
-		fireActuator.whenPressed(new ActuateBallTapper());
+		fireActuator.whenPressed(new MoveActuator(true));
+		fireActuator.whenReleased(new MoveActuator(false));
 		collectorSpinup.whenPressed(new SpinUpCollector(-1, false));
 		shooterSpinup.whenPressed(new SpinUpCollector(1, false));
 		collectorSpinup.whenReleased(new SpinUpCollector(0, false));// if
