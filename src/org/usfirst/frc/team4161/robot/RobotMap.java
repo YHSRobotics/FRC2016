@@ -28,6 +28,5 @@ public class RobotMap {
 	
 	public static Victor ArmArticulate = new Victor(ArmArticulateID), BallCollector = new Victor(BallCollectorID), ShooterActuator = new Victor(ShooterActuatorID);
 
-	public static DigitalInput BallTapLimit = new DigitalInput(BallTapLimitID);
 
 }

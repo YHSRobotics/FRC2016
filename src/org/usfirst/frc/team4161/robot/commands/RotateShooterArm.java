@@ -11,23 +11,22 @@ public class RotateShooterArm extends Command {
 	private double maxPower;
 
 	/**
-	 * Drive straight forward for x number of ticks.
+	 * Rotate arm for x number of ticks.
 	 * 
 	 * @param ticks
-	 *            Number of ticks to drive forward for.
+	 *            Number of ticks to rotate arm for.
 	 * @param forward
-	 *            If true, drive forward. Else drive backwards.
+	 *            If true, rotate up, else rotate backwards.
 	 */
 	public RotateShooterArm(int ticks, boolean forward) {
 		this(ticks, forward ? 1 : -1);// call the other constructor.
 	}
 
 	/**
-	 * Makes the robot drive straight, but does not exceed maxPower. If maxPower
-	 * is negative, it will drive backwards.
+	 * Makes the robot arm rotate.
 	 * 
 	 * @param ticks
-	 *            Ticks to drive for.
+	 *            Ticks to rotate for .
 	 * @param maxPower
 	 *            Maximum power to use. Must be in range [-1, 1] (NOTE: 0 will
 	 *            not go anywhere).
@@ -47,10 +46,6 @@ public class RotateShooterArm extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		ticks--;
-		if (shooterArm.isLimit()) {
-			ticks = 0;// stop!
-			shooterArm.ArmRotate(0);// stop the arm
-		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

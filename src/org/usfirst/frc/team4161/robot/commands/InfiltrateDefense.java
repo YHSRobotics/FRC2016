@@ -12,7 +12,6 @@ public class InfiltrateDefense extends CommandGroup {
     public  InfiltrateDefense() {
     	addSequential(new RotateShooterArm(ConversionFactor.armDegreesToTick(25), true));
     	addSequential(new DriveStraight(100, .5));//drive at partial power
-    	addSequential(new LowerShooterArm());//lower the arm.
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
