@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
 	 */
 	public void robotInit() {
 		oi = new OI();
-		
+
 		startPosChooser = new SendableChooser();
 		startPosChooser.addDefault("1", 1);
 		startPosChooser.addObject("2", 2);
@@ -56,8 +56,7 @@ public class Robot extends IterativeRobot {
 		defensePosChooser.addObject("2", 2);
 		defensePosChooser.addObject("3", 3);
 		defensePosChooser.addObject("4", 4);
-		
-		
+
 		prefs = Preferences.getInstance();
 
 		prefs.putInt("DriveTickCount", 100);
@@ -71,7 +70,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Drive for x ticks", new DriveStraight(prefs));
 		SmartDashboard.putData("Turn for x ticks", new TurnRobot(prefs));
 
-		RobotMap.LTread.setInverted(true);//make the left tread go forward at 1.0
+		RobotMap.LTread.setInverted(true);// make the left tread go forward at
+											// 1.0
 	}
 
 	/**
@@ -109,17 +109,9 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		int startPos = (Integer) startPosChooser.getSelected(), defensePos = (Integer) defensePosChooser.getSelected();
 		autonomousCommand = new AutonomousCommand(startPos, defensePos);
+		System.out.println("Autonomous started: penetrate defense " + defensePos + " from start pos" + startPos);
 
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
-		if (autonomousCommand != null)
-			autonomousCommand.start();
+		autonomousCommand.start();
 	}
 
 	/**
@@ -157,5 +149,6 @@ public class Robot extends IterativeRobot {
 	 */
 	public void testPeriodic() {
 		LiveWindow.run();
+		Scheduler.getInstance().run();//run the scheduler.
 	}
 }

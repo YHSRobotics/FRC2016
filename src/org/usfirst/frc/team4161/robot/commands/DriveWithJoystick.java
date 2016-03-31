@@ -3,8 +3,6 @@ package org.usfirst.frc.team4161.robot.commands;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
-
-import org.usfirst.frc.team4161.robot.OI;
 import org.usfirst.frc.team4161.robot.Robot;
 
 /**
