@@ -51,7 +51,8 @@ public class Robot extends IterativeRobot {
 		startPosChooser.addDefault("1", 1);
 		startPosChooser.addObject("2", 2);
 		startPosChooser.addObject("3", 3);
-		startPosChooser.addObject("Straight Forward", 3);
+		startPosChooser.addObject("Straight Forward", 4);
+		startPosChooser.addObject("No Autonomous", 5);
 
 		defensePosChooser = new SendableChooser();
 		defensePosChooser.addDefault("1", 1);
@@ -116,7 +117,7 @@ public class Robot extends IterativeRobot {
 		autonomousCommand = new AutonomousCommand(startPos, defensePos);
 		System.out.println("Autonomous started: penetrate defense " + defensePos + " from start pos" + startPos);
 
-		autonomousCommand.start();
+		//autonomousCommand.start();
 	}
 
 	/**
@@ -145,8 +146,10 @@ public class Robot extends IterativeRobot {
 	/**
 	 * This function is called periodically during operator control
 	 */
-	public void teleopPeriodic() {
+	public void teleopPeriodic() {	
 		Scheduler.getInstance().run();// this will run all current commands.
+		SmartDashboard.putNumber("L: ",OI.DriveJoystick.getRawAxis(1));
+		SmartDashboard.putNumber("R: ",OI.DriveJoystick.getRawAxis(5));
 	}
 
 	/**
