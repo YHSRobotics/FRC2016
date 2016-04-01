@@ -9,6 +9,7 @@ public class SpinUpCollector extends Command {
 
 	private int countdown;
 	private double speed;
+	private boolean block;
 	
 	/**
 	 * Spin up the collector arm.
@@ -18,6 +19,7 @@ public class SpinUpCollector extends Command {
     public SpinUpCollector(double speed, boolean block) {
     	requires(Robot.shooter);
     	this.speed = speed;
+    	this.block = block;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -36,7 +38,7 @@ public class SpinUpCollector extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return countdown <= 0;
+        return countdown <= 0 || !block;
     }
 
     // Called once after isFinished returns true
