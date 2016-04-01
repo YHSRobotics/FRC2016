@@ -13,7 +13,7 @@ public class DriveStraight extends Command {
 
 	private DriveTrain driveTrain = Robot.driveTrain;
 
-	private int ticks, startTicks, accelerationThreshold = 100;
+	private int ticks, startTicks, accelerationThreshold = 50;
 	private boolean backwards;
 	private double maxPower;
 	private Preferences prefs = null;
@@ -98,25 +98,25 @@ public class DriveStraight extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		ticks--;
-//		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
-//																// power.
-//		if (ticks <= accelerationThreshold && ticks < (startTicks - ticks)) {// don't
-//																				// decelerate
-//																				// too
-//																				// fast.
-//			double reductionFactor = ticks / accelerationThreshold;
-//			regPower *= reductionFactor;
-//		} else if (startTicks - ticks <= accelerationThreshold) {// don't
-//																	// accelerate
-//																	// too fast.
-//			double reductionFactor = (startTicks - ticks)
-//					/ accelerationThreshold;
-//			regPower *= reductionFactor;
-//		}
+		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
+																// power.
+		if ((ticks <= accelerationThreshold) && (ticks < (startTicks - ticks))) {// don't
+																				// decelerate
+																				// too
+																				// fast.
+			double reductionFactor = ticks / accelerationThreshold;
+			regPower *= reductionFactor;
+		} else if ((startTicks - ticks) <= accelerationThreshold) {// don't
+																	// accelerate
+																	// too fast.
+			double reductionFactor = (startTicks - ticks)
+					/ accelerationThreshold;
+			regPower *= reductionFactor;
+		}
 		
-		driveTrain.setDrive(maxPower, maxPower);// go straight.
+		driveTrain.setDrive(regPower, regPower);// go straight.
 		//System.out.println(maxPower);
+		ticks--;
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

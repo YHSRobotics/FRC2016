@@ -16,7 +16,7 @@ public class AutonomousCommand extends CommandGroup {
     		System.out.println("AutonomousCommand: No Autonomous Program running!");
     	}
     	else{
-    		addSequential(new DriveStraight(200, (.66)));
+    		addSequential(new DriveStraight(225, (.75)));
     	}
     	//TODO: Add ball pickup?
 //    	if(startingPosition == 6){//go straight is selected
