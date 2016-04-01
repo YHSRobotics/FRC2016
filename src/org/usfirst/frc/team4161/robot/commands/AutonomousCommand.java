@@ -12,8 +12,11 @@ public class AutonomousCommand extends CommandGroup {
     public  AutonomousCommand(int startingPosition, int targetDefense) {
     	
     	//TODO: Add ball pickup?
-    	if(startingPosition == 3){
+    	if(startingPosition == 4){//go straight is selected
     		addSequential(new DriveStraight(ConversionFactor.feetToTick(10), true));
+    	}
+    	else if(startingPosition == 5){//do nothing is selected.
+    		//do nothing.
     	}
     	else{
     		addSequential(new ApproachDefense(startingPosition, targetDefense));//go to the defense

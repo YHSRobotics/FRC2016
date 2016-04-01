@@ -19,6 +19,7 @@ public class PointAndShoot extends CommandGroup {
     public  PointAndShoot(int startDefense) {
     	
     	//compute the turning angle and distance to the tower
+    	startDefense--;//subtract 1 to match array indexing
     	double angle = Math.atan(defenseOffset[startDefense]/towerDistance),
     			distance = Math.sqrt(Math.pow(towerDistance, 2) + Math.pow(defenseOffset[startDefense], 2));
     	
