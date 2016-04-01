@@ -48,12 +48,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 
 		startPosChooser = new SendableChooser();
-		startPosChooser.addDefault("1", 1);
-		startPosChooser.addObject("2", 2);
-		startPosChooser.addObject("3", 3);
-		startPosChooser.addObject("4", 4);
-		startPosChooser.addObject("5", 5);
-		startPosChooser.addObject("Straight Forward", 6);
+		startPosChooser.addDefault("Straight Forward", 6);
 		startPosChooser.addObject("No Autonomous", 7);
 
 		defensePosChooser = new SendableChooser();
@@ -79,7 +74,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Deactivate Shooter/Collector", new SpinUpCollector(0, false));
 		SmartDashboard.putData("Actuate Ball-Tapper", new ActuateBallTapper());
 
-		RobotMap.LTread.setInverted(true);// make the left tread go forward at
+		RobotMap.RTread.setInverted(true);// make the left tread go forward at
 											// 1.0
 	}
 
@@ -119,8 +114,8 @@ public class Robot extends IterativeRobot {
 		int startPos = (Integer) startPosChooser.getSelected(), defensePos = (Integer) defensePosChooser.getSelected();
 		autonomousCommand = new AutonomousCommand(startPos, defensePos);
 		System.out.println("Autonomous started: penetrate defense " + defensePos + " from start pos" + startPos);
-
-		//autonomousCommand.start();
+		Scheduler.getInstance().removeAll();
+		autonomousCommand.start();
 	}
 
 	/**
@@ -159,7 +154,7 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during test mode
 	 */
 	public void testPeriodic() {
-		LiveWindow.run();
+		//LiveWindow.run();
 		Scheduler.getInstance().run();//run the scheduler.
 	}
 }

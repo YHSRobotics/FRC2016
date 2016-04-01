@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4161.robot.commands;
 
+import org.usfirst.frc.team4161.robot.ConversionFactor;
 import org.usfirst.frc.team4161.robot.Robot;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj.Preferences;
@@ -44,14 +45,14 @@ public class DriveStraight extends Command {
 	}
 	
 	public DriveStraight(double feet, double maxPower){
-		ticks = ConversionFactor.feetToTicks(feet);
+		ticks = ConversionFactor.feetToTick(feet);
 		//remove negative.
 		if (maxPower < 0) {
 			maxPower = -1 * maxPower;// make the power positive.
 			backwards = true;// go backwards
 		} else
 			backwards = false;// go forwards.
-
+		this.maxPower = maxPower;
 		ticks = (int)(ticks/maxPower);
 		startTicks = ticks;
 		//counteract the need for more ticks at low power
@@ -70,12 +71,13 @@ public class DriveStraight extends Command {
 	public DriveStraight(int ticks, double maxPower) {
 		requires(driveTrain);
 		this.ticks = ticks;
+		this.maxPower = maxPower;
 		startTicks = ticks;
-		if (maxPower < 0) {
-			maxPower = -1 * maxPower;// make the power positive.
-			backwards = true;// go backwards
-		} else
-			backwards = false;// go forwards.
+//		if (maxPower < 0) {
+//			maxPower = -1 * maxPower;// make the power positive.
+//			backwards = true;// go backwards
+//		} else
+//			backwards = false;// go forwards.
 
 	}
 
@@ -91,29 +93,30 @@ public class DriveStraight extends Command {
 			startTicks = ticks;
 		}
 		System.out.println("DriveStraight: Commanded to drive straight for "
-				+ ticks + " ticks.");
+				+ ticks + " ticks at " + maxPower);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		ticks--;
-		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
-																// power.
-		if (ticks <= accelerationThreshold && ticks < (startTicks - ticks)) {// don't
-																				// decelerate
-																				// too
-																				// fast.
-			double reductionFactor = ticks / accelerationThreshold;
-			regPower *= reductionFactor;
-		} else if (startTicks - ticks <= accelerationThreshold) {// don't
-																	// accelerate
-																	// too fast.
-			double reductionFactor = (startTicks - ticks)
-					/ accelerationThreshold;
-			regPower *= reductionFactor;
-		}
-
-		driveTrain.setDrive(regPower, regPower);// go straight.
+//		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
+//																// power.
+//		if (ticks <= accelerationThreshold && ticks < (startTicks - ticks)) {// don't
+//																				// decelerate
+//																				// too
+//																				// fast.
+//			double reductionFactor = ticks / accelerationThreshold;
+//			regPower *= reductionFactor;
+//		} else if (startTicks - ticks <= accelerationThreshold) {// don't
+//																	// accelerate
+//																	// too fast.
+//			double reductionFactor = (startTicks - ticks)
+//					/ accelerationThreshold;
+//			regPower *= reductionFactor;
+//		}
+		
+		driveTrain.setDrive(maxPower, maxPower);// go straight.
+		//System.out.println(maxPower);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

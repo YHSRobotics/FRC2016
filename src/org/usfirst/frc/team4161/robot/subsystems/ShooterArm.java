@@ -29,7 +29,7 @@ public class ShooterArm extends Subsystem {
 	 *            The speed to move the arm.
 	 */
 	public void ArmRotate(double speed) {
-		armArticulate.set(speed/4);
+		armArticulate.set(speed);
 	}
 
 

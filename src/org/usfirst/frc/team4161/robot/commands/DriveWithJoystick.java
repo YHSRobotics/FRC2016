@@ -44,9 +44,10 @@ public class DriveWithJoystick extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(isXbox)
-    		Robot.driveTrain.setDrive(XBox.getRawAxis(1), XBox.getRawAxis(5));
+    		Robot.driveTrain.setDrive(-XBox.getRawAxis(1), -XBox.getRawAxis(5));
     	else
-    		Robot.driveTrain.setDrive(L.getY(), R.getY());
+    		Robot.driveTrain.setDrive(-L.getY(), -R.getY());
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

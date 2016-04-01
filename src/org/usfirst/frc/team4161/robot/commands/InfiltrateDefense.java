@@ -12,7 +12,7 @@ public class InfiltrateDefense extends CommandGroup {
     public  InfiltrateDefense() {
     	System.out.println("InfiltrateDefense: I'm trying... Okay?!?!");
     	addSequential(new RotateShooterArm(ConversionFactor.armDegreesToTick(25), true));
-    	addSequential(new DriveStraight(ConversionFactor.feetToTicks(5), .5));//drive at partial power
+    	addSequential(new DriveStraight(ConversionFactor.feetToTick(5), .5));//drive at partial power
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
