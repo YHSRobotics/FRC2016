@@ -19,6 +19,7 @@ public class TurnRobot extends Command {
 	// take to speed up.
 	private final double accelerationThreshold = 100;
 	private DriveTrain driveTrain = Robot.driveTrain;
+	private Preferences prefs = null;
 
 	/**
 	 * Turn the robot for a number of ticks. If turnRight is true, the robot
@@ -59,11 +60,14 @@ public class TurnRobot extends Command {
 	 *            the preferences object to read from.
 	 */
 	public TurnRobot(Preferences prefs) {
-		this(prefs.getInt("TurnTickCount", 0), true);
+		this();
+		this.prefs = prefs;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		if(prefs != null)
+			ticks = prefs.getInt("TurnTickCount", 0);
 	}
 
 	// Called repeatedly when this Command is scheduled to run

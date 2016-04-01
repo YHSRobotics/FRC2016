@@ -59,7 +59,7 @@ public class DriveStraight extends Command {
 	protected void initialize() {
 		if(prefs != null)
 			ticks = prefs.getInt("DriveTickCount", 10);
-		System.out.println("DriveStraight: Commanded to drive straight for " + ticks + " feet.");
+		System.out.println("DriveStraight: Commanded to drive straight for " + ticks + " ticks.");
 	}
 
 	// Called repeatedly when this Command is scheduled to run
