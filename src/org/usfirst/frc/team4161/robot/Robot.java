@@ -51,14 +51,17 @@ public class Robot extends IterativeRobot {
 		startPosChooser.addDefault("1", 1);
 		startPosChooser.addObject("2", 2);
 		startPosChooser.addObject("3", 3);
-		startPosChooser.addObject("Straight Forward", 4);
-		startPosChooser.addObject("No Autonomous", 5);
+		startPosChooser.addObject("4", 4);
+		startPosChooser.addObject("5", 5);
+		startPosChooser.addObject("Straight Forward", 6);
+		startPosChooser.addObject("No Autonomous", 7);
 
 		defensePosChooser = new SendableChooser();
 		defensePosChooser.addDefault("1", 1);
 		defensePosChooser.addObject("2", 2);
 		defensePosChooser.addObject("3", 3);
 		defensePosChooser.addObject("4", 4);
+		defensePosChooser.addObject("5", 5);
 
 		prefs = Preferences.getInstance();
 

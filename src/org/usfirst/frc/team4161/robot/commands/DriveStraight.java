@@ -109,6 +109,9 @@ public class DriveStraight extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		driveTrain.setDrive(0, 0);
+		System.out.println("DriveStraight: Drove Straight for " + startTicks
+				+ " ticks. DONE!");
 	}
 
 	// Called when another command which requires one or more of the same
