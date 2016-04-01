@@ -37,7 +37,8 @@ public class TurnRobot extends Command {
 		ticks = (ticks < 0) ? -ticks : ticks;// check for negative.
 		this.ticks = ticks;
 		this.turnRight = turnRight;
-		System.out.println("TurnRobot: Robot turning for " + ticks + " ticks isRight: " + turnRight);
+		System.out.println("TurnRobot: Robot turning for " + ticks
+				+ " ticks isRight: " + turnRight);
 
 	}
 
@@ -49,7 +50,8 @@ public class TurnRobot extends Command {
 	 *            degrees to turn.
 	 */
 	public TurnRobot(double degrees) {
-		this(ConversionFactor.driveDegreesToTick(degrees), (degrees > 0) ? true : false);
+		this(ConversionFactor.driveDegreesToTick(degrees), (degrees > 0) ? true
+				: false);
 	}
 
 	/**
@@ -60,14 +62,24 @@ public class TurnRobot extends Command {
 	 *            the preferences object to read from.
 	 */
 	public TurnRobot(Preferences prefs) {
-		this();
+		requires(driveTrain);
 		this.prefs = prefs;
+		ticks = 1;
+		startTicks = 1;
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		if(prefs != null)
+		if (prefs != null) {// read from the prefs file.
 			ticks = prefs.getInt("TurnTickCount", 0);
+			if (ticks < 0) {
+				turnRight = false;
+				ticks *= -1;
+			} else
+				turnRight = true;
+			startTicks = ticks;
+		}
+		System.out.println("TurnRobot: Turning for " + ticks + " ticks");
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -80,7 +92,8 @@ public class TurnRobot extends Command {
 			power *= reductionFactor;
 		} else if (startTicks - ticks <= accelerationThreshold) {
 			// don't accelerate too fast.
-			double reductionFactor = (startTicks - ticks) / accelerationThreshold;
+			double reductionFactor = (startTicks - ticks)
+					/ accelerationThreshold;
 			power *= reductionFactor;
 		}
 
@@ -94,13 +107,14 @@ public class TurnRobot extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return (ticks >= 0);// have all the ticks completed?
+		return (ticks <= 0);// have all the ticks completed?
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
 		driveTrain.setDrive(0, 0);// stop the motors.
-		System.out.println("TurnRobot: Robot finished for " + startTicks + " ticks.");
+		System.out.println("TurnRobot: Robot finished for " + startTicks
+				+ " ticks.");
 	}
 
 	// Called when another command which requires one or more of the same

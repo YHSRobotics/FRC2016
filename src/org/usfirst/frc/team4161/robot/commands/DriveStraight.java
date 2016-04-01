@@ -15,7 +15,7 @@ public class DriveStraight extends Command {
 	private int ticks, startTicks, accelerationThreshold = 100;
 	private boolean backwards;
 	private double maxPower;
-	private Preferences prefs;
+	private Preferences prefs = null;
 
 	/**
 	 * Drive straight forward for x number of ticks.
@@ -28,9 +28,19 @@ public class DriveStraight extends Command {
 	public DriveStraight(int ticks, boolean forward) {
 		this(ticks, forward ? 1 : -1);// call the other constructor.
 	}
-	
-	public DriveStraight(Preferences prefs){
+
+	/**
+	 * Makes the robot drive a number of ticks specified in the preferences
+	 * under the tag "DriveTickCount"
+	 * 
+	 * @param prefs
+	 *            The preferences to read from.
+	 */
+	public DriveStraight(Preferences prefs) {
+		requires(driveTrain);
 		this.prefs = prefs;
+		ticks = 1;
+		startTicks = 1;
 	}
 
 	/**
@@ -57,9 +67,17 @@ public class DriveStraight extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		if(prefs != null)
+		if (prefs != null) {
 			ticks = prefs.getInt("DriveTickCount", 10);
-		System.out.println("DriveStraight: Commanded to drive straight for " + ticks + " ticks.");
+			if (ticks < 0) {
+				ticks *= -1;
+				backwards = true;
+			} else
+				backwards = false;
+			startTicks = ticks;
+		}
+		System.out.println("DriveStraight: Commanded to drive straight for "
+				+ ticks + " ticks.");
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -67,22 +85,26 @@ public class DriveStraight extends Command {
 		ticks--;
 		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
 																// power.
-		if (ticks <= accelerationThreshold && ticks < (startTicks - ticks)){//don't decelerate too fast.
-			double reductionFactor = ticks/accelerationThreshold;
+		if (ticks <= accelerationThreshold && ticks < (startTicks - ticks)) {// don't
+																				// decelerate
+																				// too
+																				// fast.
+			double reductionFactor = ticks / accelerationThreshold;
 			regPower *= reductionFactor;
-		}
-		else if ( startTicks - ticks <= accelerationThreshold ){//don't accelerate too fast.
-			double reductionFactor = (startTicks-ticks)/accelerationThreshold;
+		} else if (startTicks - ticks <= accelerationThreshold) {// don't
+																	// accelerate
+																	// too fast.
+			double reductionFactor = (startTicks - ticks)
+					/ accelerationThreshold;
 			regPower *= reductionFactor;
 		}
 
-		
 		driveTrain.setDrive(regPower, regPower);// go straight.
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return ticks <= 0;
+		return (ticks <= 0);
 	}
 
 	// Called once after isFinished returns true
