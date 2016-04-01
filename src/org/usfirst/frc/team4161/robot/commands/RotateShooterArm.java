@@ -41,6 +41,8 @@ public class RotateShooterArm extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		shooterArm.ArmRotate(maxPower);
+		System.out.println("RotateArmShooter: Arm commanded to rotate for " 
+				+ ticks + " ticks");
 	}
 
 	// Called repeatedly when this Command is scheduled to run

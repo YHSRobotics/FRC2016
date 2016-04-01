@@ -26,6 +26,7 @@ public class SpinUpCollector extends Command {
     protected void initialize() {
     	countdown = 200;
     	Robot.shooter.setCollectorSpeed(speed);
+    	System.out.println("SpinUpCollector: Spinning up collector to " + speed);
     }
 
     // Called repeatedly when this Command is scheduled to run

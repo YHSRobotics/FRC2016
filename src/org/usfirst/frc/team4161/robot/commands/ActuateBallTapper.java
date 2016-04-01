@@ -25,6 +25,7 @@ public class ActuateBallTapper extends Command {
     protected void initialize() {
     	countdown = 100;
     	Robot.shooter.setBallTapper(true);
+    	System.out.println("ActuateBallTapper: Actuating it...");
     }
 
     // Called repeatedly when this Command is scheduled to run
