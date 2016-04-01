@@ -45,8 +45,8 @@ public class ApproachDefense extends CommandGroup {
 				+ " feet to reach defense " + destinationDefense + " from start pos " + startPosition);
 
 		addSequential(new TurnRobot(angle));// turn
-		addSequential(new DriveStraight(ConversionFactor.feetToTick(distance), 1));// drive
-		addSequential(new TurnRobot(-angle));// turn
+		addSequential(new DriveStraight(distance, 1));// drive
+		addSequential(new TurnRobot(-angle));// counteract turn
 
 	}
 }

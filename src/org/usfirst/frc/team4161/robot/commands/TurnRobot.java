@@ -37,6 +37,7 @@ public class TurnRobot extends Command {
 		ticks = (ticks < 0) ? -ticks : ticks;// check for negative.
 		this.ticks = ticks;
 		this.turnRight = turnRight;
+		startTicks = ticks;
 		System.out.println("TurnRobot: Robot turning for " + ticks
 				+ " ticks isRight: " + turnRight);
 
@@ -50,8 +51,8 @@ public class TurnRobot extends Command {
 	 *            degrees to turn.
 	 */
 	public TurnRobot(double degrees) {
-		this(ConversionFactor.driveDegreesToTick(degrees), (degrees > 0) ? true
-				: false);
+		this(ConversionFactor.driveDegreesToTick(degrees), 
+				(degrees>0)?true:false);
 	}
 
 	/**

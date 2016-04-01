@@ -13,7 +13,7 @@ public class AutonomousCommand extends CommandGroup {
     	
     	//TODO: Add ball pickup?
     	if(startingPosition == 6){//go straight is selected
-    		addSequential(new DriveStraight(ConversionFactor.feetToTick(10), true));
+    		addSequential(new DriveStraight(5.0, 1.0));
     	}
     	else if(startingPosition == 7){//do nothing is selected.
     		//do nothing.

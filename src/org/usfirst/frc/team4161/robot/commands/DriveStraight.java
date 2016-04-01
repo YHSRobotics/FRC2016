@@ -42,6 +42,20 @@ public class DriveStraight extends Command {
 		ticks = 1;
 		startTicks = 1;
 	}
+	
+	public DriveStraight(double feet, double maxPower){
+		ticks = ConversionFactor.feetToTicks(feet);
+		//remove negative.
+		if (maxPower < 0) {
+			maxPower = -1 * maxPower;// make the power positive.
+			backwards = true;// go backwards
+		} else
+			backwards = false;// go forwards.
+
+		ticks = (int)(ticks/maxPower);
+		startTicks = ticks;
+		//counteract the need for more ticks at low power
+	}
 
 	/**
 	 * Makes the robot drive straight, but does not exceed maxPower. If maxPower
