@@ -31,7 +31,7 @@ public class ActuateBallTapper extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	countdown--;
-    	if(countdown == 50)
+    	if(countdown == 20)
     		Robot.shooter.setBallTapper(false);
     }
 
@@ -42,6 +42,7 @@ public class ActuateBallTapper extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.shooter.releaseBallTapper();
     }
 
     // Called when another command which requires one or more of the same

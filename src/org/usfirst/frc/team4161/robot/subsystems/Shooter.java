@@ -39,7 +39,7 @@ public class Shooter extends Subsystem {
 	 *            True if ball tapper is extended.
 	 */
 	public void setBallTapper(boolean isExtended) {
-		shooterActuator.set(isExtended ? 0.5 : 0.0);
+		shooterActuator.set(isExtended ? 0.3 : -0.1);
 	}
 	
     public void initDefaultCommand() {
