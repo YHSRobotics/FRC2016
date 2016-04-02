@@ -84,7 +84,7 @@ public class DriveStraight extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		if (prefs != null) {
-			ticks = prefs.getInt("DriveTickCount", 10);
+			ticks = prefs.getInt("DriveTickCount", 0);
 			if (ticks < 0) {
 				ticks *= -1;
 				backwards = true;
@@ -98,7 +98,7 @@ public class DriveStraight extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double regPower = backwards ? -1 * maxPower : maxPower;// get 'regular'
+		double regPower = backwards ? -maxPower : maxPower;// get 'regular'
 																// power.
 		if ((ticks <= accelerationThreshold) && (ticks < (startTicks - ticks))) {// don't
 																				// decelerate
