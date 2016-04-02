@@ -90,8 +90,8 @@ public class DriveStraight extends Command {
 				backwards = true;
 			} else
 				backwards = false;
-			startTicks = ticks;
 		}
+		startTicks = ticks;
 		System.out.println("DriveStraight: Commanded to drive straight for "
 				+ ticks + " ticks at " + maxPower);
 	}
