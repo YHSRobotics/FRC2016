@@ -92,7 +92,6 @@ public class Robot extends IterativeRobot {
 			aimWithJoystick.cancel();
 		driveTrain.setDrive(0, 0);
 		shooterArm.ArmRotate(0);
-
 	}
 
 	public void disabledPeriodic() {
